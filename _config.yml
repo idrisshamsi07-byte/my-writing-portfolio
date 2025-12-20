@@ -18,6 +18,9 @@ author: Idris Shamsi
 # Description of the site
 description: My essays and articles on technology, computer science and society.
 
+# URL for the site
+url: https://idris-shamsi-writing.netlify.app
+
 ###############################################
 # --- List of links in the navigation bar --- #
 ###############################################
