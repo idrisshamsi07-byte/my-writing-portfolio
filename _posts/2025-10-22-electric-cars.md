@@ -27,3 +27,5 @@ That is, until, in 2008, Tesla rekindled the lost dream of electric cars with th
 * [Electric Vehicles Have Been Around Since the 19th Century: Timeline - HISTORY](https://www.history.com/articles/electric-vehicles-automobiles-timeline)
 * [First Electric Car: A Brief History of the EV, 1830 to Present](https://www.caranddriver.com/features/g43480930/history-of-electric-cars/)
 * [Electric vehicles: all you need to know - Energy Saving Trust](https://energysavingtrust.org.uk/advice/electric-vehicles/)
+
+*Authored by Idris Shamsi in 2025*
