@@ -21,7 +21,7 @@ description: My essays and articles on technology, computer science and society.
 url: https://idrisshamsi07-byte.github.io
 baseurl: "/my-writing-portfolio"
 
-favicon: "/assets/img/favicon.png"
+favicon: "/assets/img/favicon.ico"
 
 ###############################################
 # --- List of links in the navigation bar --- #
