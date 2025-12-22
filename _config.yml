@@ -19,6 +19,7 @@ author: Idris Shamsi
 description: My essays and articles on technology, computer science and society.
 
 url: https://idrisshamsi07-byte.github.io
+baseurl: "/my-writing-portfolio"
 
 ###############################################
 # --- List of links in the navigation bar --- #
