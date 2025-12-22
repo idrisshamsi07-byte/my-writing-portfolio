@@ -8,5 +8,4 @@ My name is Idris Shamsi.
 
 ### My story
 
-All written work on this website is original and authored by Idris Shamsi.
-Reproduction or redistribution without permission is not permitted.
+Written content © 2025 Idris Shamsi. See Content License for details.
