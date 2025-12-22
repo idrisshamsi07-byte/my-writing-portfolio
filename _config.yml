@@ -29,10 +29,9 @@ favicon: "/favicon.png"
 
 navbar-links:
   About Me: "aboutme"
-  Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+  Categories:
+    - Gonna put something here soon!
+  Essays: ""
 
 ################
 # --- Logo --- #
@@ -148,11 +147,11 @@ page-col: "#EEF4ED"
 text-col: "#404040"
 link-col: "#008AFF"
 hover-col: "#0085A1"
-navbar-col: "#EAEAEA"
-navbar-text-col: "#404040"
+navbar-col: "#8DA9C4"
+navbar-text-col: "#0B2545"
 navbar-border-col: "#DDDDDD"
-footer-col: "#EAEAEA"
-footer-text-col: "#777777"
+footer-col: "#8DA9C4"
+footer-text-col: "#0B2545"
 footer-link-col: "#404040"
 footer-hover-col: "#0085A1"
 
