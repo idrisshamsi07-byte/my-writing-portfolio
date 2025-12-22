@@ -16,3 +16,5 @@ gemspec
 
 gem "bigdecimal"
 gem "logger"
+
+gem "github-pages", group: :jekyll_plugins
