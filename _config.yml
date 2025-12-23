@@ -30,7 +30,7 @@ favicon: "/favicon.png"
 collections:
   essays:
     output: true
-    permalink: /essays/:name/
+    permalink: /my-writing-portfolio/essays/:name/
 
 navbar-links:
   About Me: "aboutme"
