@@ -27,11 +27,19 @@ favicon: "/favicon.png"
 # --- List of links in the navigation bar --- #
 ###############################################
 
+collections:
+  essays:
+    output: true
+    permalink: /essays/:name/
+
 navbar-links:
   About Me: "aboutme"
   Categories:
-    - Gonna put something here soon!
-  Essays: ""
+    - Technology: "categories/technology"
+    - History: "categories/history"
+    - Society: "categories/society"
+    - Future: "categories/future"
+  Essays: "essays"
 
 ################
 # --- Logo --- #
