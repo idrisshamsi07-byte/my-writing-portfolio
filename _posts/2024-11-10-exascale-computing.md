@@ -18,8 +18,8 @@ You might be wondering at this point why this is so significant. With exascale c
 And let’s not forget, the progress won’t stop here. With the rate supercomputers are being developed, they are predicted to get 10 times faster every four years. Who knows? Maybe we might be carrying computers capable of a few exaFLOPS in our pockets in the near future; the sky's the limit when it comes to the potential computers have to revolutionise our lives.
 
 #### Sources:
-* [Frontier (supercomputer) \- Wikipedia](https://en.wikipedia.org/wiki/Frontier_\(supercomputer\))  
-* [Frontier supercomputer hits new highs in third year of exascale](https://www.ornl.gov/news/frontier-supercomputer-hits-new-highs-third-year-exascale)  
-* [Breaking the petaflop barrier | IBM](https://www.ibm.com/history/petaflop-barrier)
+* [Frontier (supercomputer) - Wikipedia](https://en.wikipedia.org/wiki/Frontier_\(supercomputer\))  
+* [Frontier supercomputer hits new highs in third year of exascale - Oak Ridge National Laboratory](https://www.ornl.gov/news/frontier-supercomputer-hits-new-highs-third-year-exascale)  
+* [Breaking the petaflop barrier - IBM](https://www.ibm.com/history/petaflop-barrier)
 
 *Authored by Idris Shamsi*
