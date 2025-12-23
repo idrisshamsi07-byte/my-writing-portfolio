@@ -18,7 +18,7 @@ author: Idris Shamsi
 # Description of the site
 description: My essays and articles on technology, history and society.
 
-url: https://idrisshamsi07-byte.github.io
+url: "https://idrisshamsi07-byte.github.io"
 baseurl: "/my-writing-portfolio"
 
 favicon: "/favicon.png"
