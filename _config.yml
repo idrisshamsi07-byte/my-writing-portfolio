@@ -34,7 +34,11 @@ collections:
 
 navbar-links:
   Home: ""
-  Writing: "writing"
+  Categories:
+    - Technology: "categories/technology"
+    - Future: "categories/future"
+    - History: "categories/history"
+    - Society: "categories/society"
   Essays: "essays"
   About Me: "aboutme"
 
