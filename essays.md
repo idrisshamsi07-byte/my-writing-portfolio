@@ -12,7 +12,7 @@ permalink: /essays/
 <ul>
   {% for essay in group.items %}
     <li>
-      <a href="{{ essay.url }}">{{ essay.title }}</a>
+      <a href="{{ site.baseurl }}{{ essay.url }}">{{ essay.title }}</a>
       {% if essay.year %} ({{ essay.year }}){% endif %}
     </li>
   {% endfor %}
