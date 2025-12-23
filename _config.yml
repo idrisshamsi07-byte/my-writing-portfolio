@@ -33,13 +33,10 @@ collections:
     permalink: /my-writing-portfolio/essays/:name/
 
 navbar-links:
-  About Me: "aboutme"
-  Categories:
-    - Technology: "categories/technology"
-    - History: "categories/history"
-    - Society: "categories/society"
-    - Future: "categories/future"
+  Home: ""
+  Writing: "writing"
   Essays: "essays"
+  About Me: "aboutme"
 
 ################
 # --- Logo --- #
