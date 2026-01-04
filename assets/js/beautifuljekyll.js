@@ -169,4 +169,3 @@ document.addEventListener("DOMContentLoaded", function () {
   leftBtn.addEventListener("click", () => glideScroll(-300));
   rightBtn.addEventListener("click", () => glideScroll(300));
 });
-
