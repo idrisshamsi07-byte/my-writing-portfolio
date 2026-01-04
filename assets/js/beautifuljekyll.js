@@ -142,25 +142,28 @@ let BeautifulJekyllJS = {
 document.addEventListener('DOMContentLoaded', BeautifulJekyllJS.init);
 
 document.addEventListener("DOMContentLoaded", function () {
-  const container = document.querySelector(".card-scroll-container");
+  const track = document.querySelector(".carousel-track");
   const leftBtn = document.querySelector(".left-btn");
   const rightBtn = document.querySelector(".right-btn");
 
   function glideScroll(amount) {
-    let start = container.scrollLeft;
-    let target = start + amount;
-    let step = amount / 20; // smaller steps = smoother glide
+    const start = track.scrollLeft;
+    const target = start + amount;
+    const duration = 400;
+    const startTime = performance.now();
 
-    function animate() {
-      start += step;
-      container.scrollLeft = start;
+    function animateScroll(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 0.5 * (1 - Math.cos(Math.PI * progress));
+      track.scrollLeft = start + (target - start) * ease;
 
-      if ((step > 0 && start < target) || (step < 0 && start > target)) {
-        requestAnimationFrame(animate);
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
       }
     }
 
-    animate();
+    requestAnimationFrame(animateScroll);
   }
 
   leftBtn.addEventListener("click", () => glideScroll(-300));
