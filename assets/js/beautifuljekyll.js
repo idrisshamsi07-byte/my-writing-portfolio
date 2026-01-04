@@ -146,31 +146,18 @@ document.addEventListener("DOMContentLoaded", function () {
   const leftBtn = document.querySelector(".left-btn");
   const rightBtn = document.querySelector(".right-btn");
 
-  function smoothScrollBy(container, amount, duration = 500) {
-    const start = container.scrollLeft;
-    const end = start + amount;
-    const startTime = performance.now();
+  leftBtn.addEventListener("click", () => {
+    track.scrollBy({
+      left: -300,
+      behavior: "smooth"
+    });
+  });
 
-    function easeInOutCubic(t) {
-      return t < 0.5
-        ? 4 * t * t * t
-        : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    }
-
-    function animateScroll(currentTime) {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = easeInOutCubic(progress);
-      container.scrollLeft = start + (end - start) * eased;
-
-      if (progress < 1) {
-        requestAnimationFrame(animateScroll);
-      }
-    }
-
-    requestAnimationFrame(animateScroll);
-  }
-
-  leftBtn.addEventListener("click", () => smoothScrollBy(track, -300));
-  rightBtn.addEventListener("click", () => smoothScrollBy(track, 300));
+  rightBtn.addEventListener("click", () => {
+    track.scrollBy({
+      left: 300,
+      behavior: "smooth"
+    });
+  });
 });
+
