@@ -6,20 +6,24 @@ layout: page
 
 {% assign posts = site.tags.featured %}
 
-<div class="card-scroll-container">
-  {% for post in posts %}
-  <div class="article-card">
-    <a href="{{ post.url | absolute_url }}">
-      {% if post.thumbnail-img %}
-      <img src="{{ post.thumbnail-img | absolute_url }}" class="article-thumb">
-      {% endif %}
+<div class="carousel-wrapper">
+  <button class="carousel-btn left-btn">&#10094;</button>
 
-      <h3 class="article-title">{{ post.title }}</h3>
-
-      {% if post.subtitle %}
-      <p class="article-subtitle">{{ post.subtitle }}</p>
-      {% endif %}
-    </a>
+  <div class="card-scroll-container">
+    {% for post in posts %}
+    <div class="article-card">
+      <a href="{{ post.url | absolute_url }}">
+        {% if post.thumbnail-img %}
+        <img src="{{ post.thumbnail-img | absolute_url }}" class="article-thumb">
+        {% endif %}
+        <h3 class="article-title">{{ post.title }}</h3>
+        {% if post.subtitle %}
+        <p class="article-subtitle">{{ post.subtitle }}</p>
+        {% endif %}
+      </a>
+    </div>
+    {% endfor %}
   </div>
-  {% endfor %}
+
+  <button class="carousel-btn right-btn">&#10095;</button>
 </div>
