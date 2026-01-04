@@ -104,62 +104,85 @@ h1,h2,h3,h4,h5,h6 {
   display: none;             /* Chrome/Safari */
 }
 
+/* Outer wrapper with side buttons */
 .carousel-wrapper {
   position: relative;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
 }
 
+/* Scrollable track */
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  width: 90%;
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE */
+}
+.carousel-track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Individual cards */
+.article-card {
+  min-width: 280px;
+  max-width: 280px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 15px;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+/* Thumbnail image */
+.article-thumb {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Text styling */
+.article-title {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.article-subtitle {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Arrow buttons */
 .carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.9);
   border: none;
   font-size: 2rem;
   padding: 10px 15px;
   cursor: pointer;
-  z-index: 10;
   border-radius: 50%;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 10;
+  transition: background 0.2s ease;
 }
-
-.left-btn {
-  left: 10px;
-}
-
-.right-btn {
-  right: 10px;
-}
-
 .carousel-btn:hover {
   background: white;
 }
-
-/* Center the scrolling feed and limit width */
-.carousel-inner {
-  width: 90%;
-  margin: 0 auto;
-  overflow: hidden; /* hides overflow so arrows sit outside */
-  position: relative;
+.left-btn {
+  position: absolute;
+  left: 0;
 }
-
-/* The actual scrollable row */
-.card-scroll-container {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-behavior: smooth; /* smoother scrolling */
-  padding: 20px 0;
-  scroll-snap-type: x mandatory;
-}
-
-/* Hide scrollbar */
-.card-scroll-container::-webkit-scrollbar {
-  display: none;
-}
-.card-scroll-container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.right-btn {
+  position: absolute;
+  right: 0;
 }
 
 
