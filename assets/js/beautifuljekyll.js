@@ -146,14 +146,24 @@ document.addEventListener("DOMContentLoaded", function () {
   const leftBtn = document.querySelector(".left-btn");
   const rightBtn = document.querySelector(".right-btn");
 
-  const scrollAmount = 300; // adjust for speed
+  function glideScroll(amount) {
+    let start = container.scrollLeft;
+    let target = start + amount;
+    let step = amount / 20; // smaller steps = smoother glide
 
-  leftBtn.addEventListener("click", () => {
-    container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-  });
+    function animate() {
+      start += step;
+      container.scrollLeft = start;
 
-  rightBtn.addEventListener("click", () => {
-    container.scrollBy({ left: scrollAmount, behavior: "smooth" });
-  });
+      if ((step > 0 && start < target) || (step < 0 && start > target)) {
+        requestAnimationFrame(animate);
+      }
+    }
+
+    animate();
+  }
+
+  leftBtn.addEventListener("click", () => glideScroll(-300));
+  rightBtn.addEventListener("click", () => glideScroll(300));
 });
 
