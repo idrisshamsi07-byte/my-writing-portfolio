@@ -5,6 +5,7 @@ date: 2025-10-22
 categories: [technology, history]
 tags: [featured]
 thumbnail-img: /assets/img/pexels-pixabay-258083.jpg
+cover-img: /assets/img/pexels-pixabay-258083.jpg
 ---
 
 Electric vehicles (EVs) have become commonplace in contemporary society with prominent brands adopting them (such as Mercedes and BMW) as well as brands whose entire ideology revolve around these miracle machines (like Tesla and Rivian). They are just brilliant: from the lower servicing and maintenance costs to a reduced carbon footprint, they are a critical aspect of human innovation in the 21st century; however, are they really? What if I were to tell you that not only are EVs much older than they first meets the eye, but they’ve even been around long before even the internal combustion engine!
