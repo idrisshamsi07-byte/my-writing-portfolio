@@ -135,6 +135,33 @@ h1,h2,h3,h4,h5,h6 {
   background: white;
 }
 
+/* Center the scrolling feed and limit width */
+.carousel-inner {
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden; /* hides overflow so arrows sit outside */
+  position: relative;
+}
+
+/* The actual scrollable row */
+.card-scroll-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth; /* smoother scrolling */
+  padding: 20px 0;
+  scroll-snap-type: x mandatory;
+}
+
+/* Hide scrollbar */
+.card-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+.card-scroll-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 
 h1 {
   font-size: 2.25rem;
