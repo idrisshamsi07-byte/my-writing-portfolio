@@ -141,23 +141,4 @@ let BeautifulJekyllJS = {
 
 document.addEventListener('DOMContentLoaded', BeautifulJekyllJS.init);
 
-document.addEventListener("DOMContentLoaded", function () {
-  const track = document.querySelector(".carousel-track");
-  const leftBtn = document.querySelector(".left-btn");
-  const rightBtn = document.querySelector(".right-btn");
-
-  leftBtn.addEventListener("click", () => {
-    track.scrollBy({
-      left: -300,
-      behavior: "smooth"
-    });
-  });
-
-  rightBtn.addEventListener("click", () => {
-    track.scrollBy({
-      left: 300,
-      behavior: "smooth"
-    });
-  });
-});
 
