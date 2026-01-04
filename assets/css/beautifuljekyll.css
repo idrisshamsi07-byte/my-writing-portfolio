@@ -94,21 +94,6 @@ h1,h2,h3,h4,h5,h6 {
   color: #666;
 }
 
-/* Center and widen the navbar */
-.navbar {
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-}
-
-.navbar-nav {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  width: 100%;
-}
-
 /* Hide scrollbar but keep scrolling */
 .card-scroll-container {
   -ms-overflow-style: none;  /* IE/Edge */
