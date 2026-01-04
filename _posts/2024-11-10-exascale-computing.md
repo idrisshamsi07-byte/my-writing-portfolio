@@ -4,6 +4,9 @@ title: "The Rise of Exascale Computing"
 date: 2024-11-10
 categories: [technology, history]
 tags: [featured]
+cover-img: /assets/img/pexels-cookiecutter-17489152.jpg
+thumbnail-img: /assets/img/pexels-cookiecutter-17489152.jpg
+share-img: /assets/img/pexels-cookiecutter-17489152.jpg
 ---
 
 We’ve all heard of supercomputers in science fiction or in our favourite movies. Still, it’s safe to say those movies won’t be considered “fiction” for much longer with this latest development: exascale computing.
