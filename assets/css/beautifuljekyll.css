@@ -114,13 +114,14 @@ h1,h2,h3,h4,h5,h6 {
   margin: 40px 0;
 }
 
-/* Scrollable track */
+/* Scrollable track centered at 90% width */
 .carousel-track {
   display: flex;
   gap: 20px;
   overflow-x: auto;
   scroll-behavior: smooth;
   width: 90%;
+  margin: 0 auto;
   padding: 20px 0;
   scroll-snap-type: x mandatory;
   scrollbar-width: none; /* Firefox */
@@ -163,6 +164,9 @@ h1,h2,h3,h4,h5,h6 {
 
 /* Arrow buttons */
 .carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   background: rgba(255,255,255,0.9);
   border: none;
   font-size: 2rem;
@@ -177,13 +181,12 @@ h1,h2,h3,h4,h5,h6 {
   background: white;
 }
 .left-btn {
-  position: absolute;
-  left: 0;
+  left: 20px;
 }
 .right-btn {
-  position: absolute;
-  right: 0;
+  right: 20px;
 }
+
 
 
 h1 {
