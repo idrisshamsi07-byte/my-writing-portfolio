@@ -140,3 +140,20 @@ let BeautifulJekyllJS = {
 // 2fc73a3a967e97599c9763d05e564189
 
 document.addEventListener('DOMContentLoaded', BeautifulJekyllJS.init);
+
+document.addEventListener("DOMContentLoaded", function () {
+  const container = document.querySelector(".card-scroll-container");
+  const leftBtn = document.querySelector(".left-btn");
+  const rightBtn = document.querySelector(".right-btn");
+
+  const scrollAmount = 300; // adjust for speed
+
+  leftBtn.addEventListener("click", () => {
+    container.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+  });
+
+  rightBtn.addEventListener("click", () => {
+    container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  });
+});
+
