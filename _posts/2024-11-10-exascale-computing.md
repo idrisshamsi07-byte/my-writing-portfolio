@@ -9,6 +9,8 @@ thumbnail-img: /assets/img/pexels-cookiecutter-17489152.jpg
 share-img: /assets/img/pexels-cookiecutter-17489152.jpg
 ---
 
+*This article was written for my school newsletter.*
+
 We’ve all heard of supercomputers in science fiction or in our favourite movies. Still, it’s safe to say those movies won’t be considered “fiction” for much longer with this latest development: exascale computing.
 
 Moore’s Law states that the number of transistors on computer chips doubles every two years, and so every two years, our computers will be capable of higher processing power and better performance—and this is obvious when we compare where we are now compared to the first computers in the mid-20th century. The very first computer humans ever made was the size of a small house and was only ever used by the government, and yet now we all have computers millions of times faster than we carry in our pockets. However, there are still computers the size of small houses—or in some cases small flat blocks—and these are the aforementioned supercomputers. 
