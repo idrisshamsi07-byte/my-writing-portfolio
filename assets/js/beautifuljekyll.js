@@ -156,10 +156,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Calculate the offset to center the current card
     const cardWidth = cards[0].offsetWidth;
     const gap = 30;
-    const wrapperWidth = track.parentElement.offsetWidth;
-    const offset = (currentIndex * (cardWidth + gap)) - (wrapperWidth / 2) + (cardWidth / 2);
+    // Start from center (50%) then offset by half card width to truly center it
+    const offset = (currentIndex * (cardWidth + gap)) + (cardWidth / 2);
     
-    track.style.transform = `translateX(-${Math.max(0, offset)}px)`;
+    track.style.transform = `translateX(-${offset}px)`;
     
     // Update active card styling
     cards.forEach((card, index) => {
