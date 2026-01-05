@@ -1,19 +1,18 @@
 ---
 layout: page
 ---
-
 {{ content }}
-
 {% assign posts = site.tags.featured %}
-
 <div class="carousel-wrapper">
   <button class="carousel-btn left-btn">&#10094;</button>
-
   <div class="carousel-track">
     {% assign posts = site.tags.featured %}
     {% for post in posts %}
     <div class="carousel-card">
-      <img src="{{ post.thumbnail-img | absolute_url }}" class="card-image" alt="Cover image">
+      <div class="card-image-wrapper">
+        <img src="{{ post.thumbnail-img | absolute_url }}" class="card-image" alt="Cover image">
+        <div class="card-overlay"></div>
+      </div>
       <div class="card-content">
         <h3 class="card-title">{{ post.title }}</h3>
         <p class="card-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
@@ -22,7 +21,5 @@ layout: page
     </div>
     {% endfor %}
   </div>
-
   <button class="carousel-btn right-btn">&#10095;</button>
 </div>
-
