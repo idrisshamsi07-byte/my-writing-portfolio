@@ -12,14 +12,14 @@ layout: page
   <div class="carousel-track">
     {% assign posts = site.tags.featured %}
     {% for post in posts %}
-    <div class="carousel-card">
-      <div class="card-bg" style="background-image: url('{{ post.thumbnail-img | absolute_url }}');"></div>
+    <div class="carousel-card" style="background-image: url('{{ post.thumbnail-img | absolute_url }}');">
       <div class="card-overlay">
         <h3 class="card-title">{{ post.title }}</h3>
         <p class="card-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
         <a href="{{ post.url | absolute_url }}" class="card-link">Read More</a>
       </div>
     </div>
+
     {% endfor %}
   </div>
 
