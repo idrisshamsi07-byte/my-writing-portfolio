@@ -141,4 +141,28 @@ let BeautifulJekyllJS = {
 
 document.addEventListener('DOMContentLoaded', BeautifulJekyllJS.init);
 
+document.addEventListener("DOMContentLoaded", function () {
+  const track = document.querySelector(".carousel-track");
+  const leftBtn = document.querySelector(".left-btn");
+  const rightBtn = document.querySelector(".right-btn");
+  const scrollAmount = track.offsetWidth * 0.8;
+
+  function scrollByAmount(amount) {
+    track.scrollBy({ left: amount, behavior: "smooth" });
+  }
+
+  leftBtn.addEventListener("click", () => scrollByAmount(-scrollAmount));
+  rightBtn.addEventListener("click", () => scrollByAmount(scrollAmount));
+
+  // Auto-scroll every 6 seconds
+  let autoScroll = setInterval(() => scrollByAmount(scrollAmount), 6000);
+
+  // Pause auto-scroll on interaction
+  [leftBtn, rightBtn, track].forEach(el => {
+    el.addEventListener("mouseenter", () => clearInterval(autoScroll));
+    el.addEventListener("mouseleave", () => {
+      autoScroll = setInterval(() => scrollByAmount(scrollAmount), 6000);
+    });
+  });
+});
 
