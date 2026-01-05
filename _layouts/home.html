@@ -6,26 +6,22 @@ layout: page
 
 {% assign posts = site.tags.featured %}
 
-<div class="carousel-track">
-  {% for post in site.posts %}
-  <div class="article-card">
-    <a href="{{ post.url | absolute_url }}">
-      {% if post.thumbnail-img %}
-      <img src="{{ post.thumbnail-img | absolute_url }}" class="article-thumb">
-      {% endif %}
-      <h3 class="article-title">{{ post.title }}</h3>
-      {% if post.subtitle %}
-      <p class="article-subtitle">{{ post.subtitle }}</p>
-      {% endif %}
-    </a>
-    <div class="post-entry">
-        {% assign excerpt_length = site.excerpt_length | default: 25 %}
-        {{ post.excerpt | strip_html | truncatewords: excerpt_length }}
-        {% assign excerpt_word_count = post.excerpt | number_of_words %}
-        {% if post.content != post.excerpt or excerpt_word_count > excerpt_length %}
-          <a href="{{ post.url | absolute_url }}" class="post-read-more">[Read&nbsp;More]</a>
-        {% endif %}
+<div class="featured-carousel">
+  <button class="carousel-btn left-btn">&#10094;</button>
+
+  <div class="carousel-track">
+    {% assign posts = site.tags.featured %}
+    {% for post in posts %}
+    <div class="carousel-card">
+      <div class="card-bg" style="background-image: url('{{ post.thumbnail-img | absolute_url }}');"></div>
+      <div class="card-overlay">
+        <h3 class="card-title">{{ post.title }}</h3>
+        <p class="card-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+        <a href="{{ post.url | absolute_url }}" class="card-link">Read More</a>
       </div>
+    </div>
+    {% endfor %}
   </div>
-  {% endfor %}
+
+  <button class="carousel-btn right-btn">&#10095;</button>
 </div>
