@@ -149,53 +149,97 @@ document.addEventListener("DOMContentLoaded", function () {
   
   if (!track || !leftBtn || !rightBtn || cards.length === 0) return;
   
-  const scrollAmount = 330; // card width (300) + gap (30)
+  let currentIndex = 0;
   let autoScrollInterval;
-
-  function scrollByAmount(amount) {
-    track.scrollBy({ left: amount, behavior: "smooth" });
+  
+  // Calculate how many cards are visible at once
+  function getVisibleCards() {
+    const trackWidth = track.offsetWidth;
+    const cardWidth = cards[0].offsetWidth;
+    const gap = 20;
+    return Math.floor(trackWidth / (cardWidth + gap));
   }
-
-  function scrollToNextCard() {
-    const trackWidth = track.scrollWidth - track.clientWidth;
+  
+  function updateCarousel() {
+    const cardWidth = cards[0].offsetWidth;
+    const gap = 20;
+    const scrollAmount = (cardWidth + gap) * currentIndex;
+    track.style.transform = `translateX(-${scrollAmount}px)`;
     
-    // Reset to beginning if we're at or near the end
-    if (track.scrollLeft >= trackWidth - 10) {
-      track.scrollTo({ left: 0, behavior: "smooth" });
-    } else {
-      scrollByAmount(scrollAmount);
+    // Update button states
+    leftBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
+    leftBtn.style.cursor = currentIndex === 0 ? 'default' : 'pointer';
+    
+    const maxIndex = Math.max(0, cards.length - getVisibleCards());
+    rightBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
+    rightBtn.style.cursor = currentIndex >= maxIndex ? 'default' : 'pointer';
+  }
+  
+  function scrollLeft() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateCarousel();
+      restartAutoScroll();
     }
   }
-
+  
+  function scrollRight() {
+    const maxIndex = Math.max(0, cards.length - getVisibleCards());
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateCarousel();
+      restartAutoScroll();
+    }
+  }
+  
+  function autoScroll() {
+    const maxIndex = Math.max(0, cards.length - getVisibleCards());
+    if (currentIndex >= maxIndex) {
+      currentIndex = 0;
+    } else {
+      currentIndex++;
+    }
+    updateCarousel();
+  }
+  
   function startAutoScroll() {
     stopAutoScroll();
-    autoScrollInterval = setInterval(scrollToNextCard, 6000);
+    autoScrollInterval = setInterval(autoScroll, 5000);
   }
-
+  
   function stopAutoScroll() {
     if (autoScrollInterval) {
       clearInterval(autoScrollInterval);
       autoScrollInterval = null;
     }
   }
-
+  
+  function restartAutoScroll() {
+    stopAutoScroll();
+    startAutoScroll();
+  }
+  
   // Button click handlers
-  leftBtn.addEventListener("click", () => {
-    scrollByAmount(-scrollAmount);
-    startAutoScroll(); // Restart auto-scroll after manual interaction
-  });
-
-  rightBtn.addEventListener("click", () => {
-    scrollByAmount(scrollAmount);
-    startAutoScroll(); // Restart auto-scroll after manual interaction
-  });
-
+  leftBtn.addEventListener("click", scrollLeft);
+  rightBtn.addEventListener("click", scrollRight);
+  
   // Pause auto-scroll on hover
   [leftBtn, rightBtn, track].forEach(el => {
     el.addEventListener("mouseenter", stopAutoScroll);
     el.addEventListener("mouseleave", startAutoScroll);
   });
-
-  // Start auto-scroll initially
+  
+  // Handle window resize
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      currentIndex = 0;
+      updateCarousel();
+    }, 250);
+  });
+  
+  // Initialize
+  updateCarousel();
   startAutoScroll();
 });
