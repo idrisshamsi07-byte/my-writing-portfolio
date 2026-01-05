@@ -152,27 +152,26 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentIndex = 0;
   let autoScrollInterval;
   
-  // Calculate how many cards are visible at once
-  function getVisibleCards() {
-    const trackWidth = track.offsetWidth;
-    const cardWidth = cards[0].offsetWidth;
-    const gap = 20;
-    return Math.floor(trackWidth / (cardWidth + gap));
-  }
-  
   function updateCarousel() {
+    // Calculate the offset to center the current card
     const cardWidth = cards[0].offsetWidth;
-    const gap = 20;
-    const scrollAmount = (cardWidth + gap) * currentIndex;
-    track.style.transform = `translateX(-${scrollAmount}px)`;
+    const gap = 30;
+    const offset = currentIndex * (cardWidth + gap);
+    
+    track.style.transform = `translateX(-${offset}px)`;
+    
+    // Update active card styling
+    cards.forEach((card, index) => {
+      if (index === currentIndex) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
     
     // Update button states
-    leftBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
-    leftBtn.style.cursor = currentIndex === 0 ? 'default' : 'pointer';
-    
-    const maxIndex = Math.max(0, cards.length - getVisibleCards());
-    rightBtn.style.opacity = currentIndex >= maxIndex ? '0.5' : '1';
-    rightBtn.style.cursor = currentIndex >= maxIndex ? 'default' : 'pointer';
+    leftBtn.disabled = currentIndex === 0;
+    rightBtn.disabled = currentIndex === cards.length - 1;
   }
   
   function scrollLeft() {
@@ -184,8 +183,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
   function scrollRight() {
-    const maxIndex = Math.max(0, cards.length - getVisibleCards());
-    if (currentIndex < maxIndex) {
+    if (currentIndex < cards.length - 1) {
       currentIndex++;
       updateCarousel();
       restartAutoScroll();
@@ -193,8 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   
   function autoScroll() {
-    const maxIndex = Math.max(0, cards.length - getVisibleCards());
-    if (currentIndex >= maxIndex) {
+    if (currentIndex >= cards.length - 1) {
       currentIndex = 0;
     } else {
       currentIndex++;
@@ -223,6 +220,15 @@ document.addEventListener("DOMContentLoaded", function () {
   leftBtn.addEventListener("click", scrollLeft);
   rightBtn.addEventListener("click", scrollRight);
   
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") {
+      scrollLeft();
+    } else if (e.key === "ArrowRight") {
+      scrollRight();
+    }
+  });
+  
   // Pause auto-scroll on hover
   [leftBtn, rightBtn, track].forEach(el => {
     el.addEventListener("mouseenter", stopAutoScroll);
@@ -234,10 +240,33 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", () => {
     clearTimeout(resizeTimeout);
     resizeTimeout = setTimeout(() => {
-      currentIndex = 0;
       updateCarousel();
     }, 250);
   });
+  
+  // Touch/swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  track.addEventListener("touchstart", (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    stopAutoScroll();
+  });
+  
+  track.addEventListener("touchend", (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+    startAutoScroll();
+  });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    if (touchStartX - touchEndX > swipeThreshold) {
+      scrollRight();
+    } else if (touchEndX - touchStartX > swipeThreshold) {
+      scrollLeft();
+    }
+  }
   
   // Initialize
   updateCarousel();
