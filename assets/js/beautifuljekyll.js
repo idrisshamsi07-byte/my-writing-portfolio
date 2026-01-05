@@ -145,22 +145,57 @@ document.addEventListener("DOMContentLoaded", function () {
   const track = document.querySelector(".carousel-track");
   const leftBtn = document.querySelector(".left-btn");
   const rightBtn = document.querySelector(".right-btn");
-
-  const scrollAmount = 330; // card width + gap
+  const cards = document.querySelectorAll(".carousel-card");
+  
+  if (!track || !leftBtn || !rightBtn || cards.length === 0) return;
+  
+  const scrollAmount = 330; // card width (300) + gap (30)
+  let autoScrollInterval;
 
   function scrollByAmount(amount) {
     track.scrollBy({ left: amount, behavior: "smooth" });
   }
 
-  leftBtn.addEventListener("click", () => scrollByAmount(-scrollAmount));
-  rightBtn.addEventListener("click", () => scrollByAmount(scrollAmount));
+  function scrollToNextCard() {
+    const trackWidth = track.scrollWidth - track.clientWidth;
+    
+    // Reset to beginning if we're at or near the end
+    if (track.scrollLeft >= trackWidth - 10) {
+      track.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      scrollByAmount(scrollAmount);
+    }
+  }
 
-  let autoScroll = setInterval(() => scrollByAmount(scrollAmount), 6000);
+  function startAutoScroll() {
+    stopAutoScroll();
+    autoScrollInterval = setInterval(scrollToNextCard, 6000);
+  }
 
-  [leftBtn, rightBtn, track].forEach(el => {
-    el.addEventListener("mouseenter", () => clearInterval(autoScroll));
-    el.addEventListener("mouseleave", () => {
-      autoScroll = setInterval(() => scrollByAmount(scrollAmount), 6000);
-    });
+  function stopAutoScroll() {
+    if (autoScrollInterval) {
+      clearInterval(autoScrollInterval);
+      autoScrollInterval = null;
+    }
+  }
+
+  // Button click handlers
+  leftBtn.addEventListener("click", () => {
+    scrollByAmount(-scrollAmount);
+    startAutoScroll(); // Restart auto-scroll after manual interaction
   });
+
+  rightBtn.addEventListener("click", () => {
+    scrollByAmount(scrollAmount);
+    startAutoScroll(); // Restart auto-scroll after manual interaction
+  });
+
+  // Pause auto-scroll on hover
+  [leftBtn, rightBtn, track].forEach(el => {
+    el.addEventListener("mouseenter", stopAutoScroll);
+    el.addEventListener("mouseleave", startAutoScroll);
+  });
+
+  // Start auto-scroll initially
+  startAutoScroll();
 });
