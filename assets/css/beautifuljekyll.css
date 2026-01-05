@@ -58,53 +58,96 @@ h1,h2,h3,h4,h5,h6 {
   line-height: 1.1;
 }
 
-/* Scrollable track centered at 90% width */
+.featured-carousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
 .carousel-track {
   display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
+  gap: 40px;
+  overflow: hidden;
   width: 90%;
-  margin: 0 auto;
-  padding: 20px 0;
   scroll-snap-type: x mandatory;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE */
-}
-.carousel-track::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  scroll-behavior: smooth;
 }
 
-/* Individual cards */
-.article-card {
-  min-width: 280px;
-  max-width: 280px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  padding: 15px;
-  scroll-snap-align: start;
+.carousel-card {
+  position: relative;
+  min-width: 80%;
+  height: 400px;
+  scroll-snap-align: center;
+  border-radius: 15px;
+  overflow: hidden;
   flex-shrink: 0;
+  transition: transform 0.5s ease, filter 0.5s ease;
 }
 
-/* Thumbnail image */
-.article-thumb {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 8px;
+.card-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(8px) brightness(0.7);
+  z-index: 1;
 }
 
-/* Text styling */
-.article-title {
-  margin-top: 10px;
-  font-size: 1.2rem;
+.card-overlay {
+  position: relative;
+  z-index: 2;
+  color: white;
+  padding: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.card-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.card-excerpt {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-link {
+  color: white;
   font-weight: bold;
+  text-decoration: underline;
 }
-.article-subtitle {
-  font-size: 0.9rem;
-  color: #666;
+
+/* Arrow buttons */
+.carousel-btn {
+  background: rgba(255,255,255,0.3);
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background 0.2s ease;
 }
+.carousel-btn:hover {
+  background: rgba(255,255,255,0.6);
+}
+.left-btn {
+  position: absolute;
+  left: 10px;
+}
+.right-btn {
+  position: absolute;
+  right: 10px;
+}
+
 
 
 h1 {
