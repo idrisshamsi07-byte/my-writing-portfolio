@@ -155,17 +155,10 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateCarousel() {
     const cardWidth = cards[0].offsetWidth;
     const gap = 30;
-    const wrapperWidth = track.parentElement.offsetWidth;
+    // The track starts at left: 50%, so we offset by card movements + half card to center
+    const offset = (currentIndex * (cardWidth + gap)) + (cardWidth / 2);
     
-    // Center calculation: 
-    // - Start at the wrapper's center point (wrapperWidth / 2)
-    // - Subtract half the card width to align card center with wrapper center
-    // - Then subtract the offset based on which card we're on
-    const centerOffset = (wrapperWidth / 2) - (cardWidth / 2);
-    const scrollOffset = currentIndex * (cardWidth + gap);
-    const finalOffset = scrollOffset - centerOffset;
-    
-    track.style.transform = `translateX(-${finalOffset}px)`;
+    track.style.transform = `translateX(-${offset}px)`;
     
     // Update active card styling
     cards.forEach((card, index) => {
