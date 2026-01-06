@@ -153,13 +153,19 @@ document.addEventListener("DOMContentLoaded", function () {
   let autoScrollInterval;
   
   function updateCarousel() {
-    // Calculate the offset to center the current card
     const cardWidth = cards[0].offsetWidth;
     const gap = 30;
-    // Start from center (50%) then offset by half card width to truly center it
-    const offset = (currentIndex * (cardWidth + gap)) + (cardWidth / 2);
+    const wrapperWidth = track.parentElement.offsetWidth;
     
-    track.style.transform = `translateX(-${offset}px)`;
+    // Center calculation: 
+    // - Start at the wrapper's center point (wrapperWidth / 2)
+    // - Subtract half the card width to align card center with wrapper center
+    // - Then subtract the offset based on which card we're on
+    const centerOffset = (wrapperWidth / 2) - (cardWidth / 2);
+    const scrollOffset = currentIndex * (cardWidth + gap);
+    const finalOffset = scrollOffset - centerOffset;
+    
+    track.style.transform = `translateX(-${finalOffset}px)`;
     
     // Update active card styling
     cards.forEach((card, index) => {
@@ -269,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   
-  // Initialize - set first card as active
+  // Initialize - set first card as active and center it
   currentIndex = 0;
   cards[0].classList.add('active');
   updateCarousel();
