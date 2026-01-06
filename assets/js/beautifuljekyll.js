@@ -273,12 +273,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
   
-  // Initialize
-  updateCarousel();
-  startAutoScroll();
-});
-  
-  // Initialize
+  // Initialize - set first card as active
+  currentIndex = 0;
+  cards[0].classList.add('active');
   updateCarousel();
   startAutoScroll();
 });
