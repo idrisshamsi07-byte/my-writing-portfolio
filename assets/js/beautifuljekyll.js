@@ -155,8 +155,11 @@ document.addEventListener("DOMContentLoaded", function () {
   function updateCarousel() {
     const cardWidth = cards[0].offsetWidth;
     const gap = 30;
-    // The track starts at left: 50%, so we offset by card movements + half card to center
-    const offset = (currentIndex * (cardWidth + gap)) + (cardWidth / 2);
+    // The track starts at left: 50%, so we need to:
+    // 1. Move by the card index distance
+    // 2. Add half a card width to truly center it
+    // Small adjustment: subtract a bit to account for the gap
+    const offset = (currentIndex * (cardWidth + gap)) + (cardWidth / 2) - (gap / 2);
     
     track.style.transform = `translateX(-${offset}px)`;
     
